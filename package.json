@@ -1,0 +1,26 @@
+{
+  "name": "subxfinder",
+  "version": "0.0.1",
+  "description": "Search Engine for SubDivx subtitles",
+  "main": "subxfinder.js",
+  "keywords": [
+    "subtitles",
+    "subtitulos",
+    "buscador",
+    "search",
+    "subdivx",
+    "scraping"
+  ],
+  "author": "Ariel Rey",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/arielfr/subxfinder.git"
+  },
+  "dependencies": {
+    "x-ray": "2.0.2",
+    "synchronize": "0.9.14",
+    "lodash": "3.10.1"
+  },
+  "devDependencies": {}
+}
