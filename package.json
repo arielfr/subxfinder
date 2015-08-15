@@ -1,6 +1,6 @@
 {
   "name": "subxfinder",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Search Engine for SubDivx subtitles",
   "main": "subxfinder.js",
   "keywords": [
