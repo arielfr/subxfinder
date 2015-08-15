@@ -1,6 +1,6 @@
 # subxfinder
 
-subxfinder is a search engine for subtitles from SubDivx.com. This allows you to search the subtitles without using the SubDivx crapy sarch form.
+subxfinder is a search engine for subtitles from SubDivx.com. This allows you to search the subtitles without using the SubDivx crapy search form.
 
 [![NPM](https://nodei.co/npm/subxfinder.png)](https://nodei.co/npm/subxfinder/)
 
