@@ -19,6 +19,8 @@ subxfinder.prototype.search = function(title, callback){
 		xray.timeout(_this.configs.timeout);
 
 		try{
+			if (title.length <= 3) throw new Error('The search title must have at least 3 letters');
+
 			var data = sync.await(xray(_this.configs.rootUrl + toSearch, '#contenedor_interno #contenedor_izq', {
 				result: 'span.result_busc',
 				pages: xray('.pagination a', ['']),
