@@ -21,6 +21,8 @@ subxfinder.prototype.search = function(title, callback){
 		try{
 			if (title.length <= 3) throw new Error('The search title must have at least 3 letters');
 
+			console.log('Searching subtitles for: %s', title);
+
 			var data = sync.await(xray(_this.configs.rootUrl + toSearch, '#contenedor_interno #contenedor_izq', {
 				result: 'span.result_busc',
 				pages: xray('.pagination a', ['']),
@@ -56,6 +58,37 @@ subxfinder.prototype.search = function(title, callback){
 					subtitles.push(_.merge(_.merge(data.subs.title, data.subs.description), data.subs.link));
 				}
 			}
+
+			callback(null, subtitles);
+		}catch(error){
+			callback(error);
+		}	
+	});
+}
+
+subxfinder.prototype.searchAndFilter = function(title, description_filter, strict, callback){
+	var _this = this,
+		descFilters = (strict) ? [description_filter] : description_filter.split(" ");
+
+	sync.fiber(function(){
+		try{
+			var subtitles = sync.await(_this.search(title, sync.defer()))
+			
+			//Filter by description
+			subtitles = _.filter(subtitles, function(sub){
+				var found = false;
+
+				if(sub.description){
+					_(descFilters).forEach(function(str){
+						if( sub.description.toLowerCase().indexOf(str.toLowerCase()) !== -1 ){
+							found = true;
+							return;
+						}
+					}).value();
+				}
+
+				return found;
+			});
 
 			callback(null, subtitles);
 		}catch(error){
