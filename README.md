@@ -51,7 +51,7 @@ subxfinder.searchAndFilter('mad max', 'yify x264', true, function(err, response)
 If you want you want to make a search with strict = false, this will allow you to make a more flexible search:
 
 ```
-subxfinder.searchAndFilter('mad max', 'yify 1080', true, function(err, response){
+subxfinder.searchAndFilter('mad max', 'yify 1080', false, function(err, response){
     if(!err){
 		console.log(response);
     }else{
