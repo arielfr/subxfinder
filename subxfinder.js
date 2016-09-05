@@ -56,12 +56,12 @@ subxfinder.prototype.searchAndFilter = function(title, description_filter, stric
 		descFilters = (strict) ? [description_filter] : description_filter.split(" ");
 
 	try{
-		var subtitles = _this.search(title, function(err, subtitles){
+		_this.search(title, function(err, subtitles){
 			if(err){
 				throw new Error(err);
 			}else{
 				//Filter by description
-				subtitles = _.filter(subtitles, function(sub){
+				var subsFound = _.filter(subtitles, function(sub){
 					var found = false;
 
 					if(sub.description){
@@ -75,10 +75,10 @@ subxfinder.prototype.searchAndFilter = function(title, description_filter, stric
 
 					return found;
 				});
+
+				callback.apply(null, [null, subsFound]);
 			}
 		});
-
-		callback.apply(null, [null, subtitles]);
 	}catch(error){
 		callback.apply(null, [error, null]);
 	}
