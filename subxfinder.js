@@ -103,7 +103,7 @@ function searchRecursive(configs, toSearch, subtitles, totalPages, i, callback){
 			link: xray('#buscador_detalle_sub_datos', [{link: 'a:last-child@href'}])
 		}
 	})(function(err, data){
-		subtitles.push(_.merge(_.merge(data.subs.title, data.subs.description), data.subs.link));
+		subtitles = subtitles.concat(_.merge(_.merge(data.subs.title, data.subs.description), data.subs.link));
 		i = i + 1;
 
 		if(i == totalPages){
